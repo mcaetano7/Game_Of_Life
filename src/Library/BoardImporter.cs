@@ -15,7 +15,7 @@ public class BoardImporter
         {
             // metodo para obtener el valor de una celula que devuelva true or false
             // metodo para setear el valor: coordenadas, true
-            string url = "C:\\Users\\Estudiante UCU\\Repositorios\\Game_Of_Life\\src\\array.txt";
+            string url = "..\\..\\..\\..\\array.txt";
             string content = File.ReadAllText(url);
             string[] contentLines = content.Split('\n');
             //
