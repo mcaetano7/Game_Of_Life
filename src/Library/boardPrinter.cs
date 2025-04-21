@@ -4,17 +4,20 @@ using System;
 public static class BoardPrinter
 {
     //Método que recibe al tablero y lo imprime
-    public void ImprimirBoard(Board board)
+    public static void ImprimirBoard(bool[,] board)
     {
         string resultado = "";
 
+        int width = board.GetLength(0);
+        int height = board.GetLength(1);
+
         //Recorro cada fila del tablero
-        for (int y = 0; y < board.Height; y++)
+        for (int y = 0; y < height; y++)
         {
             //Recorro cada columna de la fila
-            for (int x = 0; x < board.Width; x++)
+            for (int x = 0; x < width; x++)
             {
-                if (board.IsCellAlive(x, y))
+                if (board[x, y])
                 {
                     //Si está viva
                     resultado += "|X|";
