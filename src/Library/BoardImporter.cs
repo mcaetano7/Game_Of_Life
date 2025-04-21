@@ -3,7 +3,7 @@ using System.IO;
 /// imprime un tablero desde un txt. el tablero esta formado por
 /// una matriz de booleanos
 /// </summary>
-class BoardImporter
+public class BoardImporter
 {
     public bool[,] Board { get; private set; }
     // guarda el tablero como una matriz 2d de booleanos

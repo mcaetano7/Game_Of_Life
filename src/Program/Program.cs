@@ -35,11 +35,18 @@ namespace Ucu.Poo.GameOfLife
   static void Main(string[] args)
   {
    Console.WriteLine("Game of Life");
+<<<<<<< HEAD
    string
     tablero01 = Leer.LeerTablero("./board.txt"); //Lee el archivo board que es el que tiene el tablero de 0´s y 1´s
    bool[,]
     tableroTrueFalse =
      Board.CrearTablero(tablero01); //Crea el tablero a partir de los 0´s y 1´s cambiándolos por True o False           
+=======
+
+   BoardImporter importer = new BoardImporter();
+   bool[,] tableroTrueFalse = importer.Board;
+   
+>>>>>>> eef65c53262c35ca21b39db5e43c8f2a5a24b028
    while (true)
    {
     tableroTrueFalse = Logica.Jugar(tableroTrueFalse); //Calcula la nueva generación 
