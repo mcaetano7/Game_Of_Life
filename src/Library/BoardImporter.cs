@@ -1,15 +1,24 @@
 using System.IO;
-
+/// <summary>
+/// imprime un tablero desde un txt. el tablero esta formado por
+/// una matriz de booleanos
+/// </summary>
 class BoardImporter
 {
     public bool[,] Board { get; private set; }
+    // guarda el tablero como una matriz 2d de booleanos
+    // get allows to read desde fuera de la case
+    // set restringe la modificacion a los metodos de la clase
 
     public BoardImporter()
     {
         {
+            // metodo para obtener el valor de una celula que devuelva true or false
+            // metodo para setear el valor: coordenadas, true
             string url = "C:\\Users\\Estudiante UCU\\Repositorios\\Game_Of_Life\\src\\array.txt";
             string content = File.ReadAllText(url);
             string[] contentLines = content.Split('\n');
+            //
 
 
             Board = new bool[contentLines.Length, contentLines[0].Length];
