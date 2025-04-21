@@ -1,7 +1,7 @@
 using System;
 
 //Clase para imprimir tablero
-public class BoardPrinter
+public static class BoardPrinter
 {
     //Método que recibe al tablero y lo imprime
     public void ImprimirBoard(Board board)

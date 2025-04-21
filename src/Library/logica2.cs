@@ -1,6 +1,6 @@
-namespace Library;
+namespace Ucu.Poo.GameOfLife;
 
-public class Logica2
+public static class Logica
 {
     public static bool [,] Jugar(bool[,] tableroBool)
     {

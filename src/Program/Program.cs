@@ -25,35 +25,27 @@ using System;
 
 namespace Ucu.Poo.GameOfLife
 {
- class Program 
-  /*La clase Program ejecuta todas las responsabilidades de las clases en una sola.
-   Primero lee el archivo (en clase boardImporter), luego crea el tablero (en clase board), ejecuta el juego (en clase lógica)
-   y finalmente imprime el tablero para que se pueda visualizar (en clase Imprimir). Estas últimas dos responsabilidades
-   en un bucle while para que se puedan ir calculando las nuevas generaciones y mostrarlas en consola.*/
-    
- {
-  static void Main(string[] args)
+  class Program 
+   /*La clase Program ejecuta todas las responsabilidades de las clases en una sola.
+    Primero lee el archivo (en clase boardImporter), luego crea el tablero (en clase board), ejecuta el juego (en clase lógica)
+    y finalmente imprime el tablero para que se pueda visualizar (en clase Imprimir). Estas últimas dos responsabilidades
+    en un bucle while para que se puedan ir calculando las nuevas generaciones y mostrarlas en consola.*/
+  
   {
-   Console.WriteLine("Game of Life");
-<<<<<<< HEAD
-   string
-    tablero01 = Leer.LeerTablero("./board.txt"); //Lee el archivo board que es el que tiene el tablero de 0´s y 1´s
-   bool[,]
-    tableroTrueFalse =
-     Board.CrearTablero(tablero01); //Crea el tablero a partir de los 0´s y 1´s cambiándolos por True o False           
-=======
-
-   BoardImporter importer = new BoardImporter();
-   bool[,] tableroTrueFalse = importer.Board;
-   
->>>>>>> eef65c53262c35ca21b39db5e43c8f2a5a24b028
-   while (true)
+   static void Main(string[] args)
    {
-    tableroTrueFalse = Logica.Jugar(tableroTrueFalse); //Calcula la nueva generación 
-    Imprimir.imprimirTablero(tableroTrueFalse); //Imprime el tablero para que se puedan visualizar los ciclos de vida
+    Console.WriteLine("Game of Life");
+    
+    BoardImporter importer = new BoardImporter();
+    bool[,] tableroTrueFalse = importer.Board;
+    
+    while (true)
+    {
+     tableroTrueFalse = Logica.Jugar(tableroTrueFalse); //Calcula la nueva generación 
+     BoardPrinter.ImprimirBoard(tableroTrueFalse); //Imprime el tablero para que se puedan visualizar los ciclos de vida
+    }
+
+
    }
-
-
   }
  }
-}
