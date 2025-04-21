@@ -2,13 +2,13 @@ namespace Ucu.Poo.GameOfLife;
 
 public static class Logica
 {
-    public static bool [,] Jugar(bool[,] tableroBool)
+    public static Board Jugar(Board tableroBool)
     {
-        bool[,] gameBoard = tableroBool;
-        int boardWidth = gameBoard.GetLength(0);
-        int boardHeight = gameBoard.GetLength(1);
+        Board gameBoard = tableroBool;
+        int boardWidth = gameBoard.Height;
+        int boardHeight = gameBoard.Width;
 
-        bool[,] cloneboard = new bool[boardWidth, boardHeight];
+        Board cloneboard = new Board(boardWidth, boardHeight);
         for (int x = 0; x < boardWidth; x++)
         {
             for (int y = 0; y < boardHeight; y++)
@@ -18,35 +18,35 @@ public static class Logica
                 {
                     for (int j = y-1;j<=y+1;j++)
                     {
-                        if(i>=0 && i<boardWidth && j>=0 && j < boardHeight && gameBoard[i,j])
+                        if(i>=0 && i<boardWidth && j>=0 && j < boardHeight && gameBoard.IsCellAlive(i,j))
                         {
                             aliveNeighbors++;
                         }
                     }
                 }
-                if(gameBoard[x,y])
+                if(gameBoard.IsCellAlive(x,y))
                 {
                     aliveNeighbors--;
                 }
-                if (gameBoard[x,y] && aliveNeighbors < 2)
+                if (gameBoard.IsCellAlive(x,y) && aliveNeighbors < 2)
                 {
                     //Celula muere por baja población
-                    cloneboard[x,y] = false;
+                    cloneboard.SetCells(x,y,false);
                 }
-                else if (gameBoard[x,y] && aliveNeighbors > 3)
+                else if (gameBoard.IsCellAlive(x,y) && aliveNeighbors > 3)
                 {
                     //Celula muere por sobrepoblación
-                    cloneboard[x,y] = false;
+                    cloneboard.SetCells(x, y, false);
                 }
-                else if (!gameBoard[x,y] && aliveNeighbors == 3)
+                else if (!gameBoard.IsCellAlive(x,y) && aliveNeighbors == 3)
                 {
                     //Celula nace por reproducción
-                    cloneboard[x,y] = true;
+                    cloneboard.SetCells(x, y, true);
                 }
                 else
                 {
                     //Celula mantiene el estado que tenía
-                    cloneboard[x,y] = gameBoard[x,y];
+                    cloneboard.SetCells(x,y,gameBoard.IsCellAlive(x,y));
                 }
             }
         }

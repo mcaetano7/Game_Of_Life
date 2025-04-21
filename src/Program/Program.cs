@@ -22,6 +22,7 @@ generación que va calculando la clase Lógica (colabora con ella).
  */
 
 using System;
+using System.Threading;
 
 namespace Ucu.Poo.GameOfLife
 {
@@ -35,16 +36,16 @@ namespace Ucu.Poo.GameOfLife
    static void Main(string[] args)
    {
     Console.WriteLine("Game of Life");
-    
-    BoardImporter importer = new BoardImporter();
-    bool[,] tableroTrueFalse = importer.Board;
+
+    Board tableroTrueFalse = BoardImporter.LoadBoard();
     
     while (true)
     {
      tableroTrueFalse = Logica.Jugar(tableroTrueFalse); //Calcula la nueva generación 
      BoardPrinter.ImprimirBoard(tableroTrueFalse); //Imprime el tablero para que se puedan visualizar los ciclos de vida
+     Thread.Sleep(300);
     }
-
+    
 
    }
   }

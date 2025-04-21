@@ -5,14 +5,14 @@ using System.IO;
 /// </summary>
 public class BoardImporter
 {
-    public bool[,] Board { get; private set; }
+
     // guarda el tablero como una matriz 2d de booleanos
     // get allows to read desde fuera de la case
     // set restringe la modificacion a los metodos de la clase
 
-    public BoardImporter()
+    public static Board LoadBoard()
     {
-        {
+        
             // metodo para obtener el valor de una celula que devuelva true or false
             // metodo para setear el valor: coordenadas, true
             string url = "array.txt";
@@ -21,7 +21,7 @@ public class BoardImporter
             //
 
 
-            Board = new bool[contentLines.Length, contentLines[0].Length];
+            Board b = new Board(contentLines.Length, contentLines[0].Length);
 
             for (int y = 0; y < contentLines.Length; y++)
             {
@@ -29,11 +29,12 @@ public class BoardImporter
                 {
                     if (contentLines[y][x] == '1')
                     {
-                        Board[y, x] = true;
+                        b.SetCells(x,y,true);
                     }
                 }
             }
-        }
+        
+        return b;
     }
 
 
